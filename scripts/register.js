@@ -11,13 +11,14 @@ let petSalon = {
     },
     pets:[]
 }
-let=c=0;
+let=c=0; //this is a counter var
 //name,age,gender,breed,service,owner name,contact phone
-function Pet(name,age,gender,breed,service,ownerName,contactPhone){
+function Pet(name,age,gender,breed,color,service,ownerName,contactPhone){
     this.name=name;
     this.age=age;
     this.gender=gender;
     this.breed=breed;
+    this.color=color;
     this.service=service;
     this.owner=ownerName;
     this.phone=contactPhone;
@@ -28,6 +29,7 @@ let inputName=document.getElementById("txtName");
 let inputAge=document.getElementById("txtAge")
 let inputGender=document.getElementById("txtGender");
 let inputBreed=document.getElementById("txtBreed");
+let inputColor=document.getElementById("color");
 let inputService=document.getElementById("selService");
 let inputOwner=document.getElementById("txtOwner");
 let inputPhone=document.getElementById("txtTel");
@@ -54,7 +56,7 @@ function isValid(aPet){
 
 function register(){
     // create the pet
-    let thePet = new Pet(inputName.value,inputAge.value,inputGender.value,inputBreed.value,inputService.value,inputOwner.value,inputPhone.value);
+    let thePet = new Pet(inputName.value,inputAge.value,inputGender.value,inputBreed.value,inputColor.value,inputService.value,inputOwner.value,inputPhone.value);
     console.log(thePet);
     if(isValid(thePet)){
         // push the pet into the array
@@ -70,6 +72,7 @@ function clearInputs(){
     inputAge.value="";
     inputGender.value="";
     inputBreed.value="";
+    inputColor.value="";
     inputService.value="";
     inputOwner.value="";
     inputPhone.value="";
@@ -90,17 +93,14 @@ function deletePet(petId){
             //get the position in the array (store in a var)
             deleteIndex=i;
             console.log("I found it in position " + i);
-       }
-        
+       } 
     }
-    
     //remove from the array (splice)
     petSalon.pets.splice(deleteIndex,1);
     //remove from the html (remove)
     document.getElementById(petId).remove();
     //display to the user a message
-//
-
+    //
 }
 
 function searchPet(){
@@ -111,7 +111,6 @@ function searchPet(){
         let searchString = document.getElementById("txtSearch").value;
         console.log("Searching " + searchString);
     //in this function-----------
-    
     for (let i=0; i<petSalon.pets.length;i++){
         let pet = petSalon.pets[i];
         //find the id =  travel the array (for loop)
@@ -121,20 +120,14 @@ function searchPet(){
             document.getElementById(pet.id).classList.add("highlight");
         }else{
             document.getElementById(pet.id).classList.remove("highlight");
-        }
-            
-            
+        }       
     }
 }
-    
-    
-    
-
 
 // Create pets
-let scooby = new Pet("Scooby",50,"Male","Dane","Grooming","Shaggy","555-555-5555");
-let scrappy = new Pet("Scrappy",40,"Male","Mixed","Nails cut","Shaggy","555-555-5554");
-let cheddar = new Pet("Cheddar",10,"Female","Corgi","Grooming","Short","555-555-5553");
-let nacho = new Pet("Nacho",6,"Male","Mixed","Teeth brush","Curly","555-555-5552");
+let scooby = new Pet("Scooby",50,"Male","Dane","tan","Grooming","Shaggy","555-555-5555");
+let scrappy = new Pet("Scrappy",40,"Male","Mixed","brown","Nails cut","Shaggy","555-555-5554");
+let cheddar = new Pet("Cheddar",10,"Female","Corgi","light brown","Grooming","Short","555-555-5553");
+let nacho = new Pet("Nacho",6,"Male","Mixed","brindle","Teeth brush","Curly","555-555-5552");
 petSalon.pets.push(scooby,scrappy,cheddar,nacho);
 displayCards();

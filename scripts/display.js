@@ -31,15 +31,16 @@ function displayCards(){
                 <h4>${pet.name}</h4>
                 <button onclick="deletePet(${pet.id});">🗑️</button>
             </div>
-            <p>${pet.age}</p>
-            <p>${pet.gender}</p>
-            <p>${pet.breed}</p>
-            <p>${pet.phone}</p>
+            <label>Age: ${pet.age}</label>
+            <label>Gender: ${pet.gender}</label>
+            <label>Breed: ${pet.breed}</label>
+            <label>Color: ${pet.color}</label>
+            <label>Owner: ${pet.owner}</label>
+            <label>Phone: ${pet.phone}</label>
         </div> 
-        `;
-        document.getElementById("pets").innerHTML=tmp;
+        `;       
     }
-    
+    document.getElementById("pets").innerHTML=tmp;
 }
 
 
@@ -51,13 +52,13 @@ function displayTable(){
         tr+=`
         <table class="petTable" id="petTable">
             <td><h4>${pet.name}</h4></td>
-            <td>${pet.age}</td>
-            <td>${pet.gender}</td> 
-            <td>${pet.breed}</td>
-            <td>${pet.phone}</td>
+            <td>Age: ${pet.age}</td>
+            <td>Gender: ${pet.gender}</td>
+            <td>Breed: ${pet.breed}</td>
+            <td>Owner: ${pet.owner}</td>
+            <td>Phone: ${pet.phone}</td>
         </table> 
-        `;
-        
+        `; 
     }
     document.getElementById("pets").innerHTML=tmp;
 }
